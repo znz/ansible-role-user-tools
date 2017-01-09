@@ -3,22 +3,22 @@
   file:
     state: directory
     path: "{{ tools_bin_dir }}"
-    owner: "{{ tools_user }}"
-    group: "{{ tools_group }}"
+    owner: "{{ ansible_user_uid }}"
+    group: "{{ ansible_user_gid }}"
     mode: 0755
 - name: "{{ tools_download_dir }}"
   file:
     state: directory
     path: "{{ tools_download_dir }}"
-    owner: "{{ tools_user }}"
-    group: "{{ tools_group }}"
+    owner: "{{ ansible_user_uid }}"
+    group: "{{ ansible_user_gid }}"
     mode: 0755
 - name: "{{ tools_download_dir }}/ghq"
   file:
     state: directory
     path: "{{ tools_download_dir }}/ghq"
-    owner: "{{ tools_user }}"
-    group: "{{ tools_group }}"
+    owner: "{{ ansible_user_uid }}"
+    group: "{{ ansible_user_gid }}"
     mode: 0755
 - name: "download ghq"
   get_url:
@@ -37,8 +37,8 @@
     force: yes
     src: "{{ tools_download_dir }}/ghq/ghq"
     dest: "{{ tools_bin_dir }}/ghq"
-    owner: "{{ tools_user }}"
-    group: "{{ tools_group }}"
+    owner: "{{ ansible_user_uid }}"
+    group: "{{ ansible_user_gid }}"
 - name: "download peco"
   get_url:
     url: "{{ tools_peco_linux_amd64.url }}"
@@ -55,5 +55,5 @@
     force: yes
     src: "{{ tools_download_dir }}/peco_linux_amd64/peco"
     dest: "{{ tools_bin_dir }}/peco"
-    owner: "{{ tools_user }}"
-    group: "{{ tools_group }}"
+    owner: "{{ ansible_user_uid }}"
+    group: "{{ ansible_user_gid }}"
