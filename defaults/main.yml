@@ -1,0 +1,11 @@
+---
+tools_user: "vagrant"
+tools_group: "vagrant"
+tools_download_dir: "/home/vagrant/tmp"
+tools_bin_dir: "/home/vagrant/bin"
+tools_ghq_linux_amd64:
+  url: "https://github.com/motemen/ghq/releases/download/v0.7.4/ghq_linux_amd64.zip"
+  checksum: "sha1:e471825c1e8eb3a1162bf306bd1eb12ddb232a00"
+tools_peco_linux_amd64:
+  url: "https://github.com/peco/peco/releases/download/v0.4.7/peco_linux_amd64.tar.gz"
+  checksum: "sha1:89436cbb65d9423d029ac9c0ebc6d409e2483212"

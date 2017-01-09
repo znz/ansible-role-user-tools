@@ -1,0 +1,59 @@
+---
+- name: "$HOME/bin"
+  file:
+    state: directory
+    path: "{{ tools_bin_dir }}"
+    owner: "{{ tools_user }}"
+    group: "{{ tools_group }}"
+    mode: 0755
+- name: "{{ tools_download_dir }}"
+  file:
+    state: directory
+    path: "{{ tools_download_dir }}"
+    owner: "{{ tools_user }}"
+    group: "{{ tools_group }}"
+    mode: 0755
+- name: "{{ tools_download_dir }}/ghq"
+  file:
+    state: directory
+    path: "{{ tools_download_dir }}/ghq"
+    owner: "{{ tools_user }}"
+    group: "{{ tools_group }}"
+    mode: 0755
+- name: "download ghq"
+  get_url:
+    url: "{{ tools_ghq_linux_amd64.url }}"
+    dest: "{{ tools_download_dir }}/ghq_linux_amd64.zip"
+    checksum: "{{ tools_ghq_linux_amd64.checksum }}"
+- name: "extract ghq"
+  unarchive:
+    src: "{{ tools_download_dir }}/ghq_linux_amd64.zip"
+    dest: "{{ tools_download_dir }}/ghq"
+    remote_src: yes
+    creates: "{{ tools_download_dir }}/ghq/ghq"
+- name: "bin/ghq"
+  file:
+    state: link
+    force: yes
+    src: "{{ tools_download_dir }}/ghq/ghq"
+    dest: "{{ tools_bin_dir }}/ghq"
+    owner: "{{ tools_user }}"
+    group: "{{ tools_group }}"
+- name: "download peco"
+  get_url:
+    url: "{{ tools_peco_linux_amd64.url }}"
+    dest: "{{ tools_download_dir }}/peco_linux_amd64.tar.gz"
+    checksum: "{{ tools_peco_linux_amd64.checksum }}"
+- name: "extract peco"
+  unarchive:
+    src: "{{ tools_download_dir }}/peco_linux_amd64.tar.gz"
+    dest: "{{ tools_download_dir }}"
+    remote_src: yes
+- name: "bin/peco"
+  file:
+    state: link
+    force: yes
+    src: "{{ tools_download_dir }}/peco_linux_amd64/peco"
+    dest: "{{ tools_bin_dir }}/peco"
+    owner: "{{ tools_user }}"
+    group: "{{ tools_group }}"
