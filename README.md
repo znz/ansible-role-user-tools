@@ -10,11 +10,10 @@
 
 ## Role Variables
 
-- `anyenv_home_dir`: path to user's home directory
-- `anyenv_plugins`: repositories of anyenv plugins
-- `git_update`: `update` option of [git module](http://docs.ansible.com/git_module.html)
-- `git_depth`: `depth` option of [git module](http://docs.ansible.com/git_module.html)
-- `rbenv_plugins`: repositories of rbenv plugins
+- `tools_download_dir`: download directory
+- `tools_bin_dir`: bin directory
+- `tools_ghq_linux_amd64`: url and checksum of ghq
+- `tools_peco_linux_amd64`: url and checksum of peco
 
 ## Dependencies
 
